@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'src/core/config/router.dart';
-import 'src/core/config/themes.dart';
+import 'src/blocs/model/model_bloc.dart';
+import 'src/core/router.dart';
+import 'src/core/themes.dart';
 import 'src/blocs/button/button_bloc.dart';
 import 'src/blocs/navbar/navbar_bloc.dart';
-import 'src/blocs/test/test_bloc.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,9 +24,9 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => ButtonBloc()),
+        BlocProvider(create: (context) => ModelBloc()),
         BlocProvider(create: (context) => NavbarBloc()),
-        BlocProvider(create: (context) => TestBloc()),
+        BlocProvider(create: (context) => ButtonBloc()),
       ],
       child: MaterialApp.router(
         debugShowCheckedModeBanner: false,

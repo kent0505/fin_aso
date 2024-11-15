@@ -1,73 +1,39 @@
-import 'dart:developer' as developer;
+import 'dart:developer' as dev;
 
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
-int getCurrentTimestamp() {
-  return DateTime.now().millisecondsSinceEpoch ~/ 1000;
+int currentTimestamp() => DateTime.now().millisecondsSinceEpoch ~/ 1000;
+String formatNumber(int number) => NumberFormat('#,###').format(number);
+double getTop(BuildContext context) => MediaQuery.of(context).viewPadding.top;
+void logg(Object msg) => dev.log(msg.toString());
+
+String getAsset(String c) {
+  if (c == 'Investment') return 'assets/c1.svg';
+  if (c == 'Food') return 'assets/c2.svg';
+  if (c == 'Transport') return 'assets/c3.svg';
+  if (c == 'Procurement') return 'assets/c4.svg';
+  if (c == 'Rest') return 'assets/c5.svg';
+  if (c == 'Passive') return 'assets/c6.svg';
+  if (c == 'Salary') return 'assets/c7.svg';
+  if (c == 'Rent') return 'assets/c8.svg';
+  if (c == 'Business') return 'assets/c9.svg';
+  if (c == 'Freelance') return 'assets/c10.svg';
+  if (c == 'Investment ') return 'assets/c11.svg';
+  if (c == 'Dividends') return 'assets/c12.svg';
+  if (c == 'Royalty') return 'assets/c13.svg';
+  return 'assets/c1.svg';
 }
 
-String timestampToString(int timestamp) {
-  // timestamp to 22.06.2000
-  try {
-    DateTime date = DateTime.fromMillisecondsSinceEpoch(timestamp * 1000);
-    return DateFormat('dd.MM.yyyy').format(date);
-  } catch (e) {
-    return 'Error';
-  }
-}
-
-String dateToString(DateTime date) {
-  // DateTime to 22.06.2000
-  try {
-    return DateFormat('dd.MM.yyyy').format(date);
-  } catch (e) {
-    return 'Error';
-  }
-}
-
-String timeToString(DateTime time) {
-  // DateTime to 22:00
-  try {
-    return DateFormat('HH:mm').format(time);
-  } catch (e) {
-    return 'Error';
-  }
-}
-
-DateTime stringToDate(String date) {
-  // 22.06.2000 to DateTime
-  try {
-    return DateFormat('dd.MM.yyyy').parse(date);
-  } catch (e) {
-    return DateTime.now();
-  }
-}
-
-String formatNumber(int number) {
-  return NumberFormat('#,###').format(number);
-}
-
-double getStatusBar(BuildContext context) {
-  return MediaQuery.of(context).viewPadding.top;
-}
-
-double getBottom(BuildContext context) {
-  return MediaQuery.of(context).viewPadding.bottom;
-}
-
-double getWidth(BuildContext context) {
-  return MediaQuery.of(context).size.width;
-}
-
-double getHeight(BuildContext context) {
-  return MediaQuery.of(context).size.height;
-}
-
-void logger(Object message) {
-  try {
-    developer.log(message.toString());
-  } catch (e) {
-    debugPrint(e.toString());
-  }
-}
+List<String> getCat(bool expense) => expense
+    ? ['Investment', 'Food', 'Transport', 'Procurement', 'Rest']
+    : [
+        'Passive',
+        'Salary',
+        'Rent',
+        'Business',
+        'Freelance',
+        'Investment ',
+        'Dividends',
+        'Royalty'
+      ];

@@ -8,26 +8,15 @@ class NavbarBloc extends Bloc<NavbarEvent, NavbarState> {
   NavbarBloc() : super(NavbarInitial()) {
     on<NavbarEvent>(
       (event, emit) => switch (event) {
-        ChangePageEvent() => _changePage(event, emit),
+        ChangePage() => _change(event, emit),
       },
     );
   }
 
-  void _changePage(
-    ChangePageEvent event,
-    Emitter<NavbarState> emit,
-  ) {
-    if (event.index == 0 && state is! NavbarInitial) {
-      emit(NavbarInitial());
-    }
-    if (event.index == 1 && state is! NavbarPiechart) {
-      emit(NavbarPiechart());
-    }
-    if (event.index == 2 && state is! NavbarLesson) {
-      emit(NavbarLesson());
-    }
-    if (event.index == 3 && state is! NavbarProfile) {
-      emit(NavbarProfile());
-    }
+  void _change(ChangePage event, Emitter<NavbarState> emit) {
+    if (identical(event.index, 1)) emit(NavbarInitial());
+    if (identical(event.index, 2)) emit(NavbarPiechart());
+    if (identical(event.index, 3)) emit(NavbarLesson());
+    if (identical(event.index, 4)) emit(NavbarProfile());
   }
 }

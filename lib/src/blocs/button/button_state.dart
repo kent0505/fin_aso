@@ -5,4 +5,4 @@ sealed class ButtonState {}
 
 final class ButtonInitial extends ButtonState {}
 
-final class ButtonInactive extends ButtonState {}
+final class ButtonDisabled extends ButtonState {}

@@ -3,8 +3,8 @@ part of 'button_bloc.dart';
 @immutable
 sealed class ButtonEvent {}
 
-class CheckButtonActive extends ButtonEvent {
-  CheckButtonActive({required this.controllers});
+class CheckButton extends ButtonEvent {
+  CheckButton({required this.controllers});
 
-  final List<TextEditingController> controllers;
+  final List<String> controllers;
 }
