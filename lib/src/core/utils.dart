@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 int currentTimestamp() => DateTime.now().millisecondsSinceEpoch ~/ 1000;
-String formatNumber(int number) => NumberFormat('#,###').format(number);
+String formattedNum(int num) => NumberFormat('#,###').format(num);
 double getTop(BuildContext context) => MediaQuery.of(context).viewPadding.top;
 void logg(Object msg) => dev.log(msg.toString());
 

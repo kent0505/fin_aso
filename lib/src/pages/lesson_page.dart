@@ -18,7 +18,7 @@ class _LessonPageState extends State<LessonPage> {
 
   void onNext() {
     setState(() {
-      if (index == 4) {
+      if (index == 5) {
         index = 0;
       } else {
         index++;
@@ -91,6 +91,7 @@ class _LessonPageState extends State<LessonPage> {
             child: Center(
               child: Text(
                 lessonsList[index].title,
+                textAlign: TextAlign.center,
                 style: const TextStyle(
                   color: Color(0xff333333),
                   fontSize: 24,
@@ -114,7 +115,7 @@ class _LessonPageState extends State<LessonPage> {
           title: 'Next',
           onPressed: onNext,
         ),
-        const SizedBox(height: 60),
+        const SizedBox(height: 150),
       ],
     );
   }

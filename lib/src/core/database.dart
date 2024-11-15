@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -10,6 +12,7 @@ String profileName = '';
 String profileEmail = '';
 String profileUsername = '';
 String profileImage = '';
+int profileId = 0;
 
 Future<void> initAll() async {
   try {
@@ -24,6 +27,12 @@ Future<void> initAll() async {
         profileEmail = value.getString('profileEmail') ?? '';
         profileUsername = value.getString('profileUsername') ?? '';
         profileImage = value.getString('profileImage') ?? '';
+        profileId = value.getInt('profileId') ?? 0;
+        if (profileId == 0) {
+          int randomInt = 10000 + Random().nextInt(100000 - 10000);
+          profileId = randomInt;
+          value.setInt('profileId', profileId);
+        }
       },
     );
   } catch (e) {
