@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../core/utils.dart';
 import '../core/fonts.dart';
@@ -51,7 +52,9 @@ class _Button extends StatelessWidget {
         borderRadius: BorderRadius.circular(10),
       ),
       child: CupButton(
-        onPressed: () {},
+        onPressed: () {
+          if (id == 1) context.push('/profile');
+        },
         child: Row(
           children: [
             SizedBox(

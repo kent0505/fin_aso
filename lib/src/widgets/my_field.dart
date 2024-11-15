@@ -33,6 +33,8 @@ class MyField extends StatelessWidget {
         fontFamily: Fonts.w700,
       ),
       decoration: InputDecoration(
+        filled: true,
+        fillColor: Colors.white,
         contentPadding: const EdgeInsets.symmetric(
           vertical: 20,
           horizontal: 24,

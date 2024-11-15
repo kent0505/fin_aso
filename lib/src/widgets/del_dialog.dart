@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../core/fonts.dart';
 import 'cup_button.dart';
 
 class DelDialog extends StatelessWidget {
@@ -15,13 +16,21 @@ class DelDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Dialog(
-      backgroundColor: const Color(0xffFED600),
+      backgroundColor: Colors.white,
       child: SizedBox(
-        height: 150,
+        height: 200,
+        width: 200,
         child: Column(
           children: [
             const SizedBox(height: 20),
-            Text(title),
+            Text(
+              title,
+              style: const TextStyle(
+                color: Color(0xff333333),
+                fontSize: 24,
+                fontFamily: Fonts.w700,
+              ),
+            ),
             const Spacer(),
             Row(
               children: [
@@ -65,7 +74,14 @@ class _Button extends StatelessWidget {
     return CupButton(
       padding: 0,
       onPressed: onPressed,
-      child: Text(title),
+      child: Text(
+        title,
+        style: const TextStyle(
+          color: Color(0xff333333),
+          fontSize: 16,
+          fontFamily: Fonts.w600,
+        ),
+      ),
     );
   }
 }

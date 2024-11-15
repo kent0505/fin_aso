@@ -6,16 +6,26 @@ import 'utils.dart';
 
 List<Model> modelsList = [];
 bool onboard = true;
+String profileName = '';
+String profileEmail = '';
+String profileUsername = '';
+String profileImage = '';
 
 Future<void> initAll() async {
   try {
     await Hive.initFlutter();
-    // await Hive.deleteBoxFromDisk(DB.boxName);
-    await SharedPreferences.getInstance().then((value) async {
-      // await value.clear();
-      onboard = value.getBool('onboard') ?? true;
-    });
     Hive.registerAdapter(ModelAdap());
+    // await Hive.deleteBoxFromDisk(DB.boxName);
+    await SharedPreferences.getInstance().then(
+      (value) async {
+        // await value.clear();
+        onboard = value.getBool('onboard') ?? true;
+        profileName = value.getString('profileName') ?? '';
+        profileEmail = value.getString('profileEmail') ?? '';
+        profileUsername = value.getString('profileUsername') ?? '';
+        profileImage = value.getString('profileImage') ?? '';
+      },
+    );
   } catch (e) {
     logg(e);
   }

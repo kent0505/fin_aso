@@ -6,6 +6,7 @@ import '../blocs/button/button_bloc.dart';
 import '../blocs/model/model_bloc.dart';
 import '../models/model.dart';
 import '../core/utils.dart';
+import '../widgets/del_dialog.dart';
 import '../widgets/main_button.dart';
 import '../widgets/my_field.dart';
 import '../widgets/cat_card.dart';
@@ -56,6 +57,21 @@ class _EditPageState extends State<EditPage> {
           ),
         ));
     context.pop();
+  }
+
+  void _onDelete() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return DelDialog(
+          title: 'Delete?',
+          onYes: () {
+            context.read<ModelBloc>().add(DeleteModel(model: widget.model));
+            context.pop();
+          },
+        );
+      },
+    );
   }
 
   @override
@@ -123,6 +139,15 @@ class _EditPageState extends State<EditPage> {
         MainButton(
           title: 'Next',
           onPressed: _onEdit,
+        ),
+        const SizedBox(height: 40),
+        Center(
+          child: MainButton(
+            title: 'Delete',
+            alwaysActive: true,
+            width: 100,
+            onPressed: _onDelete,
+          ),
         ),
         const SizedBox(height: 40),
       ],

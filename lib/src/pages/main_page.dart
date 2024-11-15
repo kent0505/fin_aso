@@ -1,4 +1,5 @@
 import 'package:fin_aso/src/widgets/no_data.dart';
+import 'package:fin_aso/src/widgets/welcome_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -27,7 +28,7 @@ class MainPageState extends State<MainPage> {
       padding: const EdgeInsets.symmetric(horizontal: 24),
       children: [
         SizedBox(height: 12 + getTop(context)),
-        // profile picture
+        const WelcomeWidget(),
         const SizedBox(height: 12),
         const BalanceCard(),
         const SizedBox(height: 10),
