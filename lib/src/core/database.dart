@@ -3,10 +3,17 @@ import 'dart:math';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../models/friend.dart';
 import '../models/model.dart';
 import 'utils.dart';
 
+String boxName1 = 'fin_aso_models_box';
+String boxName2 = 'fin_aso_friends_box';
+String keyName1 = 'fin_aso_models_key';
+String keyName2 = 'fin_aso_friends_key';
+
 List<Model> modelsList = [];
+List<Friend> friendsList = [];
 bool onboard = true;
 String profileName = '';
 String profileEmail = '';
@@ -18,7 +25,9 @@ Future<void> initAll() async {
   try {
     await Hive.initFlutter();
     Hive.registerAdapter(ModelAdap());
-    // await Hive.deleteBoxFromDisk(DB.boxName);
+    Hive.registerAdapter(FriendAdap());
+    // await Hive.deleteBoxFromDisk(boxName1);
+    // await Hive.deleteBoxFromDisk(boxName2);
     await SharedPreferences.getInstance().then(
       (value) async {
         // await value.clear();
@@ -42,10 +51,13 @@ Future<void> initAll() async {
 
 Future<void> getModels() async {
   try {
-    final box = await Hive.openBox('fin_aso_box');
-    List data = box.get('models_key') ?? [];
-    modelsList = data.cast<Model>();
-    logg(modelsList.length);
+    final modelBox = await Hive.openBox(boxName1);
+    List data1 = modelBox.get(keyName1) ?? [];
+    modelsList = data1.cast<Model>();
+
+    final friendBox = await Hive.openBox(boxName2);
+    List data2 = friendBox.get(keyName2) ?? [];
+    friendsList = data2.cast<Friend>();
   } on Object catch (error, stackTrace) {
     logg(error);
     Error.throwWithStackTrace(error, stackTrace);
@@ -54,9 +66,20 @@ Future<void> getModels() async {
 
 Future<void> updateModels() async {
   try {
-    final box = await Hive.openBox('fin_aso_box');
-    box.put('models_key', modelsList);
-    modelsList = await box.get('models_key');
+    final box = await Hive.openBox(boxName1);
+    box.put(keyName1, modelsList);
+    modelsList = await box.get(keyName1);
+  } on Object catch (error, stackTrace) {
+    logg(error);
+    Error.throwWithStackTrace(error, stackTrace);
+  }
+}
+
+Future<void> updateFriends() async {
+  try {
+    final box = await Hive.openBox(boxName2);
+    box.put(keyName2, friendsList);
+    friendsList = await box.get(keyName2);
   } on Object catch (error, stackTrace) {
     logg(error);
     Error.throwWithStackTrace(error, stackTrace);

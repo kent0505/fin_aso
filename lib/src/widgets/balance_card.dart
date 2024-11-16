@@ -13,7 +13,8 @@ class BalanceCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 144,
-      padding: const EdgeInsets.symmetric(horizontal: 25),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
+      margin: const EdgeInsets.symmetric(horizontal: 24),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),

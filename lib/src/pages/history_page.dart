@@ -24,7 +24,7 @@ class HistoryPage extends StatelessWidget {
             );
           }
           return ListView.builder(
-            padding: const EdgeInsets.symmetric(horizontal: 24),
+            padding: EdgeInsets.zero,
             itemCount: state.models.length,
             itemBuilder: (context, index) {
               if (index == 0) {

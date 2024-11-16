@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import 'src/blocs/friend/friend_bloc.dart';
 import 'src/blocs/model/model_bloc.dart';
 import 'src/core/router.dart';
 import 'src/core/themes.dart';
@@ -25,6 +26,7 @@ class Application extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(create: (context) => ModelBloc()),
+        BlocProvider(create: (context) => FriendBloc()),
         BlocProvider(create: (context) => NavbarBloc()),
         BlocProvider(create: (context) => ButtonBloc()),
       ],

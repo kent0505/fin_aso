@@ -20,7 +20,11 @@ class HistoryCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       height: 74,
-      margin: const EdgeInsets.only(bottom: 18),
+      margin: const EdgeInsets.only(
+        bottom: 18,
+        left: 24,
+        right: 24,
+      ),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(18),

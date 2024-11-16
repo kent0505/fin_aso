@@ -7,6 +7,7 @@ import '../blocs/model/model_bloc.dart';
 import '../widgets/cup_button.dart';
 import '../widgets/add_expense_income.dart';
 import '../widgets/balance_card.dart';
+import '../widgets/friends_widget.dart';
 import '../widgets/history_card.dart';
 import '../widgets/no_data.dart';
 import '../widgets/sheet_widget.dart';
@@ -25,7 +26,7 @@ class MainPageState extends State<MainPage> {
   @override
   Widget build(BuildContext context) {
     return ListView(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: EdgeInsets.zero,
       children: [
         SizedBox(height: 12 + getTop(context)),
         const WelcomeWidget(),
@@ -34,15 +35,17 @@ class MainPageState extends State<MainPage> {
         const SizedBox(height: 10),
         const Row(
           children: [
+            SizedBox(width: 24),
             AddExpenseIncome(expense: true),
             SizedBox(width: 36),
             AddExpenseIncome(expense: false),
+            SizedBox(width: 24),
           ],
         ),
         const SizedBox(height: 24),
         const _Title('Your Friends'),
         const SizedBox(height: 18),
-        // friends
+        const FriendsWidget(),
         const SizedBox(height: 24),
         const _Title(
           'History',
@@ -88,6 +91,7 @@ class _Title extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       children: [
+        const SizedBox(width: 24),
         Text(
           title,
           style: const TextStyle(
@@ -119,6 +123,7 @@ class _Title extends StatelessWidget {
               ),
             ),
           ),
+          const SizedBox(width: 24),
         ],
       ],
     );

@@ -1,5 +1,7 @@
 import 'package:go_router/go_router.dart';
 
+import '../models/friend.dart';
+import '../pages/friend_page.dart';
 import '../pages/home_page.dart';
 import '../pages/onboard_page.dart';
 import '../pages/profile_page.dart';
@@ -23,6 +25,12 @@ final routerConfig = GoRouter(
     GoRoute(
       path: '/profile',
       builder: (context, state) => const ProfilePage(),
+    ),
+    GoRoute(
+      path: '/friend',
+      builder: (context, state) => FriendPage(
+        friend: state.extra as Friend,
+      ),
     ),
   ],
 );

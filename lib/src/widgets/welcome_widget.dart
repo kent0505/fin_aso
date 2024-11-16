@@ -16,6 +16,7 @@ class WelcomeWidget extends StatelessWidget {
       height: 50,
       child: Row(
         children: [
+          const SizedBox(width: 24),
           CupButton(
             onPressed: () {
               context.push('/profile');
