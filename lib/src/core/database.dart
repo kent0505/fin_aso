@@ -92,11 +92,3 @@ Future<void> updateFriends() async {
     Error.throwWithStackTrace(error, stackTrace);
   }
 }
-
-Future<void> saveOnb() async {
-  await SharedPreferences.getInstance().then(
-    (value) {
-      value.setBool('onboard', false);
-    },
-  );
-}

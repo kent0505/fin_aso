@@ -48,7 +48,7 @@ class _AddPageState extends State<AddPage> {
   void _onSave() {
     context.read<ModelBloc>().add(AddModel(
           model: Model(
-            id: currentTimestamp(), // - 86400
+            id: currentTimestamp(), // - 86400,
             title: _controller1.text,
             amount: int.tryParse(_controller2.text) ?? 0,
             category: _controller3.text,
