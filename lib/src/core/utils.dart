@@ -8,6 +8,7 @@ import 'database.dart';
 
 int currentTimestamp() => DateTime.now().millisecondsSinceEpoch ~/ 1000;
 String formattedNum(int num) => NumberFormat('#,###').format(num);
+String dateString(DateTime date) => DateFormat('MMM dd yyyy').format(date);
 double getTop(BuildContext context) => MediaQuery.of(context).viewPadding.top;
 void logg(Object msg) => dev.log(msg.toString());
 
@@ -41,10 +42,8 @@ List<String> getCat(bool expense) => expense
         'Royalty'
       ];
 
-String getFormattedCurrentDate() {
-  final DateTime now = DateTime.now();
-  return DateFormat('MMMM dd yyyy').format(now);
-}
+String getFormattedCurrentDate() =>
+    DateFormat('MMMM dd yyyy').format(DateTime.now());
 
 int getTotalAmount() {
   int incomes = 0;

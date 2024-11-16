@@ -51,12 +51,19 @@ Future<void> initAll() async {
 
 Future<void> getModels() async {
   try {
-    final modelBox = await Hive.openBox(boxName1);
-    List data1 = modelBox.get(keyName1) ?? [];
+    final box = await Hive.openBox(boxName1);
+    List data1 = box.get(keyName1) ?? [];
     modelsList = data1.cast<Model>();
+  } on Object catch (error, stackTrace) {
+    logg(error);
+    Error.throwWithStackTrace(error, stackTrace);
+  }
+}
 
-    final friendBox = await Hive.openBox(boxName2);
-    List data2 = friendBox.get(keyName2) ?? [];
+Future<void> getFriends() async {
+  try {
+    final box = await Hive.openBox(boxName2);
+    List data2 = box.get(keyName2) ?? [];
     friendsList = data2.cast<Friend>();
   } on Object catch (error, stackTrace) {
     logg(error);

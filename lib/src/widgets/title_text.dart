@@ -12,6 +12,7 @@ class TitleText extends StatelessWidget {
     return Center(
       child: Text(
         title,
+        textAlign: TextAlign.center,
         style: const TextStyle(
           color: Color(0xff333333),
           fontSize: 22,

@@ -20,7 +20,7 @@ class FriendBloc extends Bloc<FriendEvent, FriendState> {
   }
   void _get(GetFriends event, Emitter<FriendState> emit) async {
     try {
-      await getModels();
+      await getFriends();
       emit(FriendsLoaded(friends: friendsList));
     } on Object catch (_) {
       emit(FriendFailure());

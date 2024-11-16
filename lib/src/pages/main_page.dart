@@ -4,16 +4,18 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import '../core/fonts.dart';
 import '../core/utils.dart';
 import '../blocs/model/model_bloc.dart';
+import '../models/finance.dart';
 import '../widgets/cup_button.dart';
 import '../widgets/add_expense_income.dart';
 import '../widgets/balance_card.dart';
+import '../widgets/finance_card.dart';
 import '../widgets/friends_widget.dart';
 import '../widgets/history_card.dart';
 import '../widgets/no_data.dart';
 import '../widgets/sheet_widget.dart';
 import '../widgets/welcome_widget.dart';
+import 'finance_page.dart';
 import 'history_page.dart';
-import 'news_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -67,10 +69,10 @@ class MainPageState extends State<MainPage> {
         const SizedBox(height: 6),
         const _Title(
           'News',
-          body: NewsPage(),
+          body: FinancePage(),
         ),
         const SizedBox(height: 18),
-        // news card
+        FinanceCard(finance: financesList[0]),
         const SizedBox(height: 18),
         const SizedBox(height: 83),
       ],
