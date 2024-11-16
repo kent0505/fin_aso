@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../core/fonts.dart';
 
-class TabWidget extends StatefulWidget {
-  const TabWidget({
+class MyTabWidget extends StatefulWidget {
+  const MyTabWidget({
     super.key,
     required this.pages,
     required this.titles,
@@ -13,10 +13,10 @@ class TabWidget extends StatefulWidget {
   final List<String> titles;
 
   @override
-  State<TabWidget> createState() => _TabWidgetState();
+  State<MyTabWidget> createState() => _MyTabWidgetState();
 }
 
-class _TabWidgetState extends State<TabWidget>
+class _MyTabWidgetState extends State<MyTabWidget>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
   int _selectedIndex = 0;

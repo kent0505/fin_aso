@@ -9,8 +9,9 @@ import 'src/core/themes.dart';
 import 'src/blocs/button/button_bloc.dart';
 import 'src/blocs/navbar/navbar_bloc.dart';
 
-Future<void> main() async {
+Future main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  //
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
     DeviceOrientation.portraitDown,
@@ -28,13 +29,12 @@ class Application extends StatelessWidget {
         BlocProvider(create: (context) => ModelBloc()),
         BlocProvider(create: (context) => FriendBloc()),
         BlocProvider(create: (context) => NavbarBloc()),
-        BlocProvider(create: (context) => ButtonBloc()),
+        BlocProvider(create: (context) => ButtonBloc())
       ],
       child: MaterialApp.router(
-        debugShowCheckedModeBanner: false,
-        theme: theme,
-        routerConfig: routerConfig,
-      ),
+          theme: theme,
+          routerConfig: routerConfig,
+          debugShowCheckedModeBanner: false),
     );
   }
 }

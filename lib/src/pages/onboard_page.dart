@@ -43,12 +43,12 @@ class _OnboardPageState extends State<OnboardPage> {
 
   int index = 1;
 
-  String getTitle() {
+  String _title() {
     if (index == 1) return 'Application to control your budget, save money';
     return 'Enter your details';
   }
 
-  String getDescription() {
+  String _des() {
     if (index == 1) {
       return 'Use all the functions of the application, get visual statistics, share your success with friends';
     }
@@ -58,7 +58,7 @@ class _OnboardPageState extends State<OnboardPage> {
     return 'Add your photo to make it easier for other users to find you';
   }
 
-  void onSkip() async {
+  void _skip() async {
     SharedPreferences.getInstance().then(
       (value) {
         onboard = false;
@@ -117,7 +117,7 @@ class _OnboardPageState extends State<OnboardPage> {
                   children: [
                     const Spacer(),
                     CupButton(
-                      onPressed: onSkip,
+                      onPressed: _skip,
                       minSize: 20,
                       child: const Text(
                         'Skip',
@@ -136,7 +136,7 @@ class _OnboardPageState extends State<OnboardPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 45),
                 child: Text(
-                  getTitle(),
+                  _title(),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: Color(0xff333333),
@@ -213,7 +213,7 @@ class _OnboardPageState extends State<OnboardPage> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 45),
                 child: Text(
-                  getDescription(),
+                  _des(),
                   textAlign: TextAlign.center,
                   style: const TextStyle(
                     color: Color(0xff333333),

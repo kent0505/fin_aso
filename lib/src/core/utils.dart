@@ -1,5 +1,3 @@
-import 'dart:developer' as dev;
-
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
@@ -10,7 +8,6 @@ int currentTimestamp() => DateTime.now().millisecondsSinceEpoch ~/ 1000;
 String formattedNum(int num) => NumberFormat('#,###').format(num);
 String dateString(DateTime date) => DateFormat('MMM dd yyyy').format(date);
 double getTop(BuildContext context) => MediaQuery.of(context).viewPadding.top;
-void logg(Object msg) => dev.log(msg.toString());
 
 String getAsset(String c) {
   if (c == 'Investment') return 'assets/c1.svg';
@@ -42,56 +39,55 @@ List<String> getCat(bool expense) => expense
         'Royalty'
       ];
 
-String getFormattedCurrentDate() =>
-    DateFormat('MMMM dd yyyy').format(DateTime.now());
+String formatCurrentDate() => DateFormat('MMMM dd yyyy').format(DateTime.now());
 
 int getTotalAmount() {
-  int incomes = 0;
-  int expenses = 0;
+  int inc = 0;
+  int exp = 0;
   for (Model model in modelsList) {
-    model.expense ? expenses += model.amount : incomes += model.amount;
+    model.expense ? exp += model.amount : inc += model.amount;
   }
-  return incomes - expenses;
+  return inc - exp;
 }
 
-int getTodayAmount(bool expense) {
-  final today = DateTime.now();
+int nowamount(bool expense) {
+  final now = DateTime.now();
   return modelsList.where((model) {
     final date = DateTime.fromMillisecondsSinceEpoch(model.id * 1000);
-    return date.year == today.year &&
-        date.month == today.month &&
-        date.day == today.day &&
+    return date.year == now.year &&
+        date.month == now.month &&
+        date.day == now.day &&
         model.expense == expense;
   }).fold(0, (sum, model) => sum + model.amount);
 }
 
-List<double> getWeekAmounts(bool expense) {
+List<double> weekamounts(bool expense) {
   final now = DateTime.now();
-  final startOfWeek = now.subtract(Duration(days: now.weekday - 1));
-  List<double> weeklyAmounts = List.filled(7, 0);
+  final start = now.subtract(Duration(days: now.weekday - 1));
+  List<double> weekly = List.filled(7, 0);
   for (Model model in modelsList) {
     final date = DateTime.fromMillisecondsSinceEpoch(model.id * 1000);
-    if (date.isAfter(startOfWeek.subtract(const Duration(days: 1))) &&
-        date.isBefore(startOfWeek.add(const Duration(days: 7))) &&
+    if (date.isAfter(start.subtract(const Duration(days: 1))) &&
+        date.isBefore(start.add(const Duration(days: 7))) &&
         model.expense == expense) {
       int weekdayIndex = date.weekday - 1;
-      weeklyAmounts[weekdayIndex] += model.amount;
+      weekly[weekdayIndex] += model.amount;
     }
   }
-  return weeklyAmounts;
+  return weekly;
 }
 
-List<double> getMonthAmounts(bool expense) {
-  final today = DateTime.now();
-  final List<double> weeklyAmounts = List.filled(4, 0.0);
+List<double> monthamounts(bool expense) {
+  final now = DateTime.now();
+  final List<double> weekly = List.filled(4, 0.0);
   for (Model model in modelsList) {
     final date = DateTime.fromMillisecondsSinceEpoch(model.id * 1000);
-    if (date.year == today.year &&
-        date.month == today.month &&
+    if (date.year == now.year &&
+        date.month == now.month &&
         model.expense == expense) {
       final weekIndex = ((date.day - 1) ~/ 7);
-      weeklyAmounts[weekIndex] += model.amount;
+      weekly[weekIndex] += model.amount;
     }
   }
-  return weeklyAmounts;
+  return weekly;
 }

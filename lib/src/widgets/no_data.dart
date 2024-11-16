@@ -14,7 +14,7 @@ class NoData extends StatelessWidget {
   Widget build(BuildContext context) {
     return const Center(
       child: Text(
-        'No data',
+        'No data.',
         style: TextStyle(
           color: Color(0xff333333),
           fontSize: 12,

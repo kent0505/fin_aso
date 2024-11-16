@@ -10,8 +10,8 @@ class PieChartDay extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expenses = getTodayAmount(true);
-    final incomes = getTodayAmount(false);
+    final expenses = nowamount(true);
+    final incomes = nowamount(false);
 
     return Container(
       height: 308,
@@ -66,7 +66,7 @@ class PieChartDay extends StatelessWidget {
           ),
           const SizedBox(height: 14),
           Text(
-            getFormattedCurrentDate(),
+            formatCurrentDate(),
             style: const TextStyle(
               color: Color(0xff333333),
               fontSize: 12,

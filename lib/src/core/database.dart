@@ -5,7 +5,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/friend.dart';
 import '../models/model.dart';
-import 'utils.dart';
 
 String boxName1 = 'fin_aso_models_box';
 String boxName2 = 'fin_aso_friends_box';
@@ -22,31 +21,24 @@ String profileImage = '';
 int profileId = 0;
 
 Future<void> initAll() async {
-  try {
-    await Hive.initFlutter();
-    Hive.registerAdapter(ModelAdap());
-    Hive.registerAdapter(FriendAdap());
-    // await Hive.deleteBoxFromDisk(boxName1);
-    // await Hive.deleteBoxFromDisk(boxName2);
-    await SharedPreferences.getInstance().then(
-      (value) async {
-        // await value.clear();
-        onboard = value.getBool('onboard') ?? true;
-        profileName = value.getString('profileName') ?? '';
-        profileEmail = value.getString('profileEmail') ?? '';
-        profileUsername = value.getString('profileUsername') ?? '';
-        profileImage = value.getString('profileImage') ?? '';
-        profileId = value.getInt('profileId') ?? 0;
-        if (profileId == 0) {
-          int randomInt = 10000 + Random().nextInt(100000 - 10000);
-          profileId = randomInt;
-          value.setInt('profileId', profileId);
-        }
-      },
-    );
-  } catch (e) {
-    logg(e);
-  }
+  await Hive.initFlutter();
+  Hive.registerAdapter(ModelAdap());
+  Hive.registerAdapter(FriendAdap());
+  await SharedPreferences.getInstance().then(
+    (value) async {
+      onboard = value.getBool('onboard') ?? true;
+      profileName = value.getString('profileName') ?? '';
+      profileEmail = value.getString('profileEmail') ?? '';
+      profileUsername = value.getString('profileUsername') ?? '';
+      profileImage = value.getString('profileImage') ?? '';
+      profileId = value.getInt('profileId') ?? 0;
+      if (profileId == 0) {
+        int randomInt = 10000 + Random().nextInt(100000 - 10000);
+        profileId = randomInt;
+        value.setInt('profileId', profileId);
+      }
+    },
+  );
 }
 
 Future<void> getModels() async {
@@ -55,7 +47,6 @@ Future<void> getModels() async {
     List data1 = box.get(keyName1) ?? [];
     modelsList = data1.cast<Model>();
   } on Object catch (error, stackTrace) {
-    logg(error);
     Error.throwWithStackTrace(error, stackTrace);
   }
 }
@@ -66,7 +57,6 @@ Future<void> getFriends() async {
     List data2 = box.get(keyName2) ?? [];
     friendsList = data2.cast<Friend>();
   } on Object catch (error, stackTrace) {
-    logg(error);
     Error.throwWithStackTrace(error, stackTrace);
   }
 }
@@ -77,7 +67,6 @@ Future<void> updateModels() async {
     box.put(keyName1, modelsList);
     modelsList = await box.get(keyName1);
   } on Object catch (error, stackTrace) {
-    logg(error);
     Error.throwWithStackTrace(error, stackTrace);
   }
 }
@@ -88,7 +77,6 @@ Future<void> updateFriends() async {
     box.put(keyName2, friendsList);
     friendsList = await box.get(keyName2);
   } on Object catch (error, stackTrace) {
-    logg(error);
     Error.throwWithStackTrace(error, stackTrace);
   }
 }

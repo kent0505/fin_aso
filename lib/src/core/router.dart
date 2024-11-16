@@ -11,26 +11,29 @@ final routerConfig = GoRouter(
   initialLocation: '/',
   routes: [
     GoRoute(
-      path: '/',
-      builder: (context, state) => const SplashPage(),
-    ),
+        path: '/',
+        builder: (context, state) {
+          return const SplashPage();
+        }),
     GoRoute(
-      path: '/onboard',
-      builder: (context, state) => const OnboardPage(),
-    ),
+        path: '/onboard',
+        builder: (context, state) {
+          return const OnboardPage();
+        }),
     GoRoute(
-      path: '/home',
-      builder: (context, state) => const HomePage(),
-    ),
+        path: '/home',
+        builder: (context, state) {
+          return const HomePage();
+        }),
     GoRoute(
-      path: '/profile',
-      builder: (context, state) => const ProfilePage(),
-    ),
+        path: '/profile',
+        builder: (context, state) {
+          return const ProfilePage();
+        }),
     GoRoute(
-      path: '/friend',
-      builder: (context, state) => FriendPage(
-        friend: state.extra as Friend,
-      ),
-    ),
+        path: '/friend',
+        builder: (context, state) {
+          return FriendPage(friend: state.extra as Friend);
+        }),
   ],
 );

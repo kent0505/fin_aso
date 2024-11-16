@@ -20,22 +20,22 @@ class PieChartWidget extends StatelessWidget {
     int incomes = 0;
 
     if (id == 1) {
-      expenses = getTodayAmount(true);
-      incomes = getTodayAmount(false);
+      expenses = nowamount(true);
+      incomes = nowamount(false);
     }
     if (id == 2) {
-      for (double i in getWeekAmounts(true)) {
+      for (double i in weekamounts(true)) {
         expenses += i.toInt();
       }
-      for (double i in getWeekAmounts(false)) {
+      for (double i in weekamounts(false)) {
         incomes += i.toInt();
       }
     }
     if (id == 3) {
-      for (double i in getMonthAmounts(true)) {
+      for (double i in monthamounts(true)) {
         expenses += i.toInt();
       }
-      for (double i in getMonthAmounts(false)) {
+      for (double i in monthamounts(false)) {
         incomes += i.toInt();
       }
     }

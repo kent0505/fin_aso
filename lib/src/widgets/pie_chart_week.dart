@@ -20,8 +20,8 @@ class PieChartWeek extends StatelessWidget {
         children: [
           _Chart(
             title: 'Mon',
-            incomes: getWeekAmounts(false)[0],
-            expenses: getWeekAmounts(true)[0],
+            incomes: weekamounts(false)[0],
+            expenses: weekamounts(true)[0],
           ),
           const DottedLine(
             dashLength: 2,
@@ -31,8 +31,8 @@ class PieChartWeek extends StatelessWidget {
           ),
           _Chart(
             title: 'Tue',
-            incomes: getWeekAmounts(false)[1],
-            expenses: getWeekAmounts(true)[1],
+            incomes: weekamounts(false)[1],
+            expenses: weekamounts(true)[1],
           ),
           const DottedLine(
             dashLength: 2,
@@ -42,8 +42,8 @@ class PieChartWeek extends StatelessWidget {
           ),
           _Chart(
             title: 'Wed',
-            incomes: getWeekAmounts(false)[2],
-            expenses: getWeekAmounts(true)[2],
+            incomes: weekamounts(false)[2],
+            expenses: weekamounts(true)[2],
           ),
           const DottedLine(
             dashLength: 2,
@@ -53,8 +53,8 @@ class PieChartWeek extends StatelessWidget {
           ),
           _Chart(
             title: 'Thr',
-            incomes: getWeekAmounts(false)[3],
-            expenses: getWeekAmounts(true)[3],
+            incomes: weekamounts(false)[3],
+            expenses: weekamounts(true)[3],
           ),
           const DottedLine(
             dashLength: 2,
@@ -64,8 +64,8 @@ class PieChartWeek extends StatelessWidget {
           ),
           _Chart(
             title: 'Fri',
-            incomes: getWeekAmounts(false)[4],
-            expenses: getWeekAmounts(true)[4],
+            incomes: weekamounts(false)[4],
+            expenses: weekamounts(true)[4],
           ),
           const DottedLine(
             dashLength: 2,
@@ -75,8 +75,8 @@ class PieChartWeek extends StatelessWidget {
           ),
           _Chart(
             title: 'Sat',
-            incomes: getWeekAmounts(false)[5],
-            expenses: getWeekAmounts(true)[5],
+            incomes: weekamounts(false)[5],
+            expenses: weekamounts(true)[5],
           ),
           const DottedLine(
             dashLength: 2,
@@ -86,8 +86,8 @@ class PieChartWeek extends StatelessWidget {
           ),
           _Chart(
             title: 'Sun',
-            incomes: getWeekAmounts(false)[6],
-            expenses: getWeekAmounts(true)[6],
+            incomes: weekamounts(false)[6],
+            expenses: weekamounts(true)[6],
           ),
         ],
       ),

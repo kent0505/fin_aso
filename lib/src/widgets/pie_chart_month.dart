@@ -20,8 +20,8 @@ class PieChartMonth extends StatelessWidget {
         children: [
           _Chart(
             title: 'W1',
-            incomes: getMonthAmounts(false)[0],
-            expenses: getMonthAmounts(true)[0],
+            incomes: monthamounts(false)[0],
+            expenses: monthamounts(true)[0],
           ),
           const DottedLine(
             dashLength: 2,
@@ -31,8 +31,8 @@ class PieChartMonth extends StatelessWidget {
           ),
           _Chart(
             title: 'W2',
-            incomes: getMonthAmounts(false)[1],
-            expenses: getMonthAmounts(true)[1],
+            incomes: monthamounts(false)[1],
+            expenses: monthamounts(true)[1],
           ),
           const DottedLine(
             dashLength: 2,
@@ -42,8 +42,8 @@ class PieChartMonth extends StatelessWidget {
           ),
           _Chart(
             title: 'W3',
-            incomes: getMonthAmounts(false)[2],
-            expenses: getMonthAmounts(true)[2],
+            incomes: monthamounts(false)[2],
+            expenses: monthamounts(true)[2],
           ),
           const DottedLine(
             dashLength: 2,
@@ -53,8 +53,8 @@ class PieChartMonth extends StatelessWidget {
           ),
           _Chart(
             title: 'W4',
-            incomes: getMonthAmounts(false)[3],
-            expenses: getMonthAmounts(true)[3],
+            incomes: monthamounts(false)[3],
+            expenses: monthamounts(true)[3],
           ),
         ],
       ),

@@ -4,7 +4,7 @@ import '../core/utils.dart';
 import '../widgets/pie_chart_day.dart';
 import '../widgets/pie_chart_month.dart';
 import '../widgets/pie_chart_week.dart';
-import '../widgets/tab_widget.dart';
+import '../widgets/my_tab_widget.dart';
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/title_text.dart';
 
@@ -19,7 +19,7 @@ class PieChartPage extends StatelessWidget {
         const TitleText('Settings'),
         const SizedBox(height: 40),
         const Expanded(
-          child: TabWidget(
+          child: MyTabWidget(
             titles: [
               'Day',
               'Week',

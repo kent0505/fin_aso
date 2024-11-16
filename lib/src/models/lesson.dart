@@ -8,14 +8,6 @@ class Lesson {
   final String content;
 }
 
-// List<Lesson> lessonsList = [
-//   Lesson(title: '', content: ''),
-//   Lesson(title: '', content: ''),
-//   Lesson(title: '', content: ''),
-//   Lesson(title: '', content: ''),
-//   Lesson(title: '', content: ''),
-// ];
-
 List<Lesson> lessonsList = [
   Lesson(
     title: 'Mastering Personal Finance',
