@@ -1,16 +1,16 @@
-import 'package:fin_aso/src/widgets/no_data.dart';
-import 'package:fin_aso/src/widgets/welcome_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../blocs/model/model_bloc.dart';
 import '../core/fonts.dart';
 import '../core/utils.dart';
+import '../blocs/model/model_bloc.dart';
 import '../widgets/cup_button.dart';
 import '../widgets/add_expense_income.dart';
 import '../widgets/balance_card.dart';
 import '../widgets/history_card.dart';
+import '../widgets/no_data.dart';
 import '../widgets/sheet_widget.dart';
+import '../widgets/welcome_widget.dart';
 import 'history_page.dart';
 import 'news_page.dart';
 

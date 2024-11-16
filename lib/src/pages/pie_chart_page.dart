@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../core/utils.dart';
+import '../widgets/pie_chart_day.dart';
+import '../widgets/pie_chart_month.dart';
+import '../widgets/pie_chart_week.dart';
 import '../widgets/tab_widget.dart';
 import '../widgets/pie_chart_widget.dart';
 import '../widgets/title_text.dart';
@@ -23,9 +26,9 @@ class PieChartPage extends StatelessWidget {
               'Month',
             ],
             pages: [
-              PieChartWidget(),
-              PieChartWidget(),
-              PieChartWidget(),
+              PieChartWidget(id: 1, pieChart: PieChartDay()),
+              PieChartWidget(id: 2, pieChart: PieChartWeek()),
+              PieChartWidget(id: 3, pieChart: PieChartMonth()),
             ],
           ),
         ),

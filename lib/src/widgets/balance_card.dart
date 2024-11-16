@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../blocs/model/model_bloc.dart';
 import '../core/database.dart';
 import '../core/fonts.dart';
+import '../core/utils.dart';
 
 class BalanceCard extends StatelessWidget {
   const BalanceCard({super.key});
@@ -28,13 +31,17 @@ class BalanceCard extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          const Text(
-            '\$ 24,450.89',
-            style: TextStyle(
-              color: Color(0xff333333),
-              fontSize: 40,
-              fontFamily: Fonts.w700,
-            ),
+          BlocBuilder<ModelBloc, ModelState>(
+            builder: (context, state) {
+              return Text(
+                '\$ ${formattedNum(getTotalAmount())}',
+                style: const TextStyle(
+                  color: Color(0xff333333),
+                  fontSize: 40,
+                  fontFamily: Fonts.w700,
+                ),
+              );
+            },
           ),
           const Spacer(),
           Row(

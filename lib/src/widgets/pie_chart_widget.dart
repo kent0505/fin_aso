@@ -2,23 +2,50 @@ import 'package:flutter/material.dart';
 import 'package:dotted_line/dotted_line.dart';
 
 import '../core/fonts.dart';
+import '../core/utils.dart';
 
 class PieChartWidget extends StatelessWidget {
-  const PieChartWidget({super.key});
+  const PieChartWidget({
+    super.key,
+    required this.id,
+    required this.pieChart,
+  });
+
+  final int id;
+  final Widget pieChart;
 
   @override
   Widget build(BuildContext context) {
+    int expenses = 0;
+    int incomes = 0;
+
+    if (id == 1) {
+      expenses = getTodayAmount(true);
+      incomes = getTodayAmount(false);
+    }
+    if (id == 2) {
+      for (double i in getWeekAmounts(true)) {
+        expenses += i.toInt();
+      }
+      for (double i in getWeekAmounts(false)) {
+        incomes += i.toInt();
+      }
+    }
+    if (id == 3) {
+      for (double i in getMonthAmounts(true)) {
+        expenses += i.toInt();
+      }
+      for (double i in getMonthAmounts(false)) {
+        incomes += i.toInt();
+      }
+    }
+    final total = incomes - expenses;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Column(
         children: [
-          Container(
-            height: 308,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-          ),
+          pieChart,
           const SizedBox(height: 26),
           Container(
             height: 56,
@@ -41,13 +68,13 @@ class PieChartWidget extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(16),
             ),
-            child: const Row(
+            child: Row(
               children: [
                 _Data(
                   title: 'Income',
-                  amount: '500',
+                  amount: '\$$incomes',
                 ),
-                DottedLine(
+                const DottedLine(
                   dashLength: 2,
                   dashGapLength: 2,
                   direction: Axis.vertical,
@@ -55,9 +82,9 @@ class PieChartWidget extends StatelessWidget {
                 ),
                 _Data(
                   title: 'Expense',
-                  amount: '500',
+                  amount: '\$$expenses',
                 ),
-                DottedLine(
+                const DottedLine(
                   dashLength: 2,
                   dashGapLength: 2,
                   direction: Axis.vertical,
@@ -65,7 +92,7 @@ class PieChartWidget extends StatelessWidget {
                 ),
                 _Data(
                   title: 'Total',
-                  amount: '500 000',
+                  amount: '\$$total',
                 ),
               ],
             ),
